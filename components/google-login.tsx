@@ -1,8 +1,14 @@
-"use client";
-
 import { signIn } from "next-auth/react";
 import { Button } from "./ui/button";
 
-export default function GoogleLogin() {
-  return <Button onClick={() => signIn("google")}>Continue with Google</Button>;
+export function GoogleLogin() {
+  const handleGoogleLogin = () => {
+    signIn("google", { callbackUrl: "/" });
+  };
+
+  return (
+    <Button onClick={handleGoogleLogin} className="w-full">
+      Sign in with Google
+    </Button>
+  );
 }
